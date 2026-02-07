@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet';
 import HomePage from './pages/Home';
 import CompanyPage from './pages/Companies/CompanyPage';
 import RobotPage from './pages/Robots/RobotPage';
+import RobotStructurePage from './pages/RobotStructure/RobotStructurePage';
 import NewsListPage from './pages/News/NewsListPage';
 import NewsDetailPage from './pages/News/NewsDetailPage';
 import AgiPathPage from './pages/AgiPath/AgiPathPage';
@@ -66,6 +67,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/companies/:slug" element={<CompanyPage />} />
               <Route path="/robots/:id" element={<RobotPage />} />
+              <Route path="/robot-structure" element={<RobotStructurePage />} />
               <Route path="/news" element={<NewsListPage />} />
               <Route path="/news/:id" element={<NewsDetailPage />} />
               <Route path="/agi-path" element={<AgiPathPage />} />

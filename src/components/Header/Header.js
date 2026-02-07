@@ -582,6 +582,16 @@ const AppHeader = () => {
                 >
                   通往 AGI 之路
                 </ExploreItem>
+                <ExploreItem
+                  type="button"
+                  className={location.pathname === '/robot-structure' ? 'active' : ''}
+                  onClick={() => {
+                    setExploreOpen(false);
+                    navigate('/robot-structure');
+                  }}
+                >
+                  机器人系统架构
+                </ExploreItem>
               </ExplorePanel>
             )}
           >
@@ -712,6 +722,13 @@ const AppHeader = () => {
             onClick={() => { closeMenu(); navigate('/agi-path'); }}
           >
             通往 AGI 之路
+          </MobileNavButton>
+          <MobileNavButton
+            type="button"
+            className={location.pathname === '/robot-structure' ? 'active' : ''}
+            onClick={() => { closeMenu(); navigate('/robot-structure'); }}
+          >
+            机器人系统架构
           </MobileNavButton>
           <MobileNavButton type="button" onClick={() => { closeMenu(); setSubscribeModalOpen(true); }}>
             <MailOutlined /> 订阅

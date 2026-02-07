@@ -4,6 +4,7 @@ const PATH = '/productx/openrobotx/companies';
 const PATH_HUMANOID = '/productx/openrobotx/humanoid-robots';
 const PATH_NEWS = '/productx/openrobotx/news';
 const PATH_HISTORY_EVENTS = '/productx/openrobotx/history-events';
+const PATH_ROBOT_STRUCTURE = '/productx/openrobotx/robot-structure';
 
 /**
  * 分页查询公司列表
@@ -179,6 +180,26 @@ export const getHistoryEventById = async (id) => {
     return {
       success: false,
       message: error.response?.data?.message || error.message || '获取详情失败',
+    };
+  }
+};
+
+/**
+ * 获取机器人架构页完整数据（核心节点、四层节点、三种连接）
+ * @returns {Promise<{ success: boolean, data?: RobotStructureDTO, message?: string }>}
+ *  data: { coreNode, layers, systems, subNodes, microNodes, crossConnections, subConnections, microConnections }
+ */
+export const getRobotStructure = async () => {
+  try {
+    const { data } = await axios.get(PATH_ROBOT_STRUCTURE);
+    if (data?.success && data?.data != null) {
+      return { success: true, data: data.data };
+    }
+    return { success: false, message: data?.message || '获取架构数据失败' };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.response?.data?.message || error.message || '获取架构数据失败',
     };
   }
 };
