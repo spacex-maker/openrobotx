@@ -14,12 +14,17 @@ const getBaseURL = () => {
     return process.env.REACT_APP_API_URL || 'http://localhost:8080';
   }
   
+  // Open Robot X 前端域名，使用对应后端
+  if (hostname.includes('openrobotx.com')) {
+    return 'https://api.openrobotx.com';
+  }
+  
   // 如果前端域名是 ai2obj.com，使用国际版后端
   if (hostname.includes('ai2obj.com')) {
     return 'https://api.ai2obj.com';
   }
   
-  // 其他情况（中国用户，anakkix.cn域名），使用中国版后端
+  // 其他情况（中国用户，anakkix.cn 域名），使用中国版后端
   return 'https://app.anakkix.cn';
 };
 
