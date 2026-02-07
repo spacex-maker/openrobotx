@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useParams, Navigate } from 'react-router-dom';
-import { Spin } from 'antd';
-import CompanyPageLayout from './CompanyPageLayout';
+import { CompanyPageLayout } from './CompanyPageLayout';
 import { getCompanyBySlug } from '../../api/openrobotx';
 import { apiCompanyToDetail } from './companyAdapter';
-
-const SpinWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-  background: #0a0e17;
-`;
 
 const CompanyPage = () => {
   const { slug } = useParams();
@@ -30,6 +20,7 @@ const CompanyPage = () => {
     let cancelled = false;
     setLoading(true);
     setNotFound(false);
+    
     getCompanyBySlug(slug)
       .then((res) => {
         if (cancelled) return;
@@ -47,14 +38,16 @@ const CompanyPage = () => {
       .finally(() => {
         if (!cancelled) setLoading(false);
       });
+      
     return () => { cancelled = true; };
   }, [slug]);
 
   if (loading) {
     return (
-      <SpinWrap>
-        <Spin size="large" />
-      </SpinWrap>
+      <div className="min-h-screen bg-[#0a0e17] flex items-center justify-center">
+        {/* 使用 Tailwind 实现的 Loading Spinner */}
+        <div className="w-12 h-12 border-2 border-[#00d4aa] border-t-transparent rounded-full animate-spin" />
+      </div>
     );
   }
 
