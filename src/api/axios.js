@@ -14,13 +14,8 @@ const getBaseURL = () => {
     return process.env.REACT_APP_API_URL || 'http://localhost:8080';
   }
   
-  // Open Robot X 前端域名，使用对应后端
-  if (hostname.includes('openrobotx.com')) {
-    return 'https://api.openrobotx.com';
-  }
-  
-  // 如果前端域名是 ai2obj.com，使用国际版后端
-  if (hostname.includes('ai2obj.com')) {
+  // openrobotx.com / ai2obj.com 前端均使用 ai2obj 后端
+  if (hostname.includes('openrobotx.com') || hostname.includes('ai2obj.com')) {
     return 'https://api.ai2obj.com';
   }
   
