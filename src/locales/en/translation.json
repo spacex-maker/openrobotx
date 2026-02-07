@@ -1,0 +1,125 @@
+{
+  "common": {
+    "loading": "Loading",
+    "back": "Back",
+    "search": "Search",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "language": "Language",
+    "noData": "No data available"
+  },
+  "header": {
+    "explore": "Explore",
+    "topCompanies": "Top Robot Companies",
+    "news": "Industry News",
+    "agiPath": "Path to AGI",
+    "robotStructure": "Robot System Architecture",
+    "subscribe": "Subscribe",
+    "github": "GitHub",
+    "user": "User",
+    "goLogin": "Go to Login"
+  },
+  "hero": {
+    "badge": "v2.0 Public Beta is Live",
+    "heading1": "Build the Body.",
+    "heading2": "Ignite the Mind.",
+    "description": "OpenRobotX is the next-generation open-source community for Embodied AI. Connecting developers worldwide, from mechanical structures to neural networks, we're defining the future of robotics together.",
+    "exploreRobots": "Explore Robots",
+    "starGitHub": "Star on GitHub",
+    "scroll": "Scroll"
+  },
+  "home": {
+    "badge": "Open Source · Embodied AI · Humanoid Robots",
+    "title": "Open Robot X",
+    "subtitle": "Open-source embodied intelligence community. Focus on Humanoid, Embodied AI, ROS and open-source robotics. Connect developers and enthusiasts to advance the next generation of robotics.",
+    "subscribeCta": "Subscribe",
+    "featuresTitle": "Core Features",
+    "featuresSubtitle": "From company showcase to parameter comparison, everything about humanoid robotics",
+    "topCompaniesTitle": "Top Robot Companies",
+    "topCompaniesSubtitle": "The world's most influential humanoid robot companies. Click to learn more.",
+    "robotCompareTitle": "Humanoid Robot Comparison",
+    "robotCompareSubtitle": "Mainstream humanoid robot models, DOF, payload, battery life and AI capabilities at a glance.",
+    "robotIntro": "Robot Intro",
+    "paramCompare": "Parameter Compare",
+    "dashboard": "Dashboard",
+    "viewParams": "View Parameters",
+    "compareParams": "Compare Parameters",
+    "subscribeTitle": "Subscribe",
+    "subscribeSubtitle": "Subscribe to Open Robot X updates and get the latest humanoid robot and embodied AI industry news."
+  },
+  "news": {
+    "title": "Industry News",
+    "subtitle": "Latest updates, in-depth analysis, and funding reports in humanoid robots, embodied intelligence, and open-source robotics",
+    "allTypes": "All",
+    "newsFlash": "News Flash",
+    "inDepth": "In-depth",
+    "funding": "Funding",
+    "launch": "Launch",
+    "searchPlaceholder": "Search title or summary",
+    "searchBtn": "Search",
+    "empty": "No data available",
+    "gridLayout": "Grid Layout",
+    "listLayout": "List Layout",
+    "total": "Total {{count}}"
+  },
+  "agiPath": {
+    "title": "The Path to AGI",
+    "subtitle": "Key events and milestones on the road to humanoid robots, embodied intelligence, and artificial general intelligence",
+    "empty": "No timeline events yet. Stay tuned.",
+    "milestone": "Milestone"
+  },
+  "robotStructure": {
+    "title": "Robot System Architecture",
+    "scrollZoom": "Scroll to zoom",
+    "zoom": "Zoom",
+    "loadFailed": "Load failed"
+  },
+  "company": {
+    "backToHome": "Back to Home",
+    "notFound": "Company not found"
+  },
+  "robot": {
+    "backToHome": "Back to Home",
+    "country": "Country",
+    "height": "Height (cm)",
+    "weight": "Weight (kg)",
+    "totalDof": "Total DOF",
+    "handDof": "Hand DOF per Hand",
+    "payload": "Payload (kg)",
+    "walkingSpeed": "Walking Speed (km/h)",
+    "runningSpeed": "Running Speed (km/h)",
+    "batteryLife": "Battery Life (h)",
+    "price": "Price (USD)",
+    "targetApp": "Target Application",
+    "aiCore": "AI Core",
+    "availability": "Availability",
+    "website": "Website"
+  },
+  "auth": {
+    "loginExpired": "Login Expired",
+    "loginExpiredDesc": "Your session has expired. Please log in again."
+  },
+  "subscribeModal": {
+    "title": "Subscribe Rules",
+    "intro": "Please read the following rules and terms before subscribing to better use our email subscription service.",
+    "content": "After subscribing, you will receive the latest updates and industry news from Open Robot X. Please scroll to the bottom of the page to complete your subscription.",
+    "goSubscribe": "Subscribe",
+    "later": "Later",
+    "rule1Label": "Content",
+    "rule1Desc": "You will receive curated updates from Open Robot X: open-source humanoid robots, embodied AI and Humanoid industry news, new products and milestones, community events and live stream announcements.",
+    "rule2Label": "Frequency",
+    "rule2Desc": "We typically send 1-2 emails per week. Extra editions may be sent for major events. No spam—you can unsubscribe anytime.",
+    "rule3Label": "Unsubscribe",
+    "rule3Desc": "Each email includes an unsubscribe link at the bottom. One click to opt out, no extra steps required.",
+    "rule4Label": "Privacy & Data",
+    "rule4Desc": "We only use your email to send subscription content. We do not sell or share your data with third parties. After unsubscribing, we will no longer send emails to that address."
+  }
+}

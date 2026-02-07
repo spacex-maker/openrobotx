@@ -1,0 +1,125 @@
+{
+  "common": {
+    "loading": "加载中",
+    "back": "返回",
+    "search": "搜索",
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录",
+    "language": "语言",
+    "noData": "暂无数据"
+  },
+  "header": {
+    "explore": "探索",
+    "topCompanies": "十大机器人公司",
+    "news": "行业资讯",
+    "agiPath": "通往 AGI 之路",
+    "robotStructure": "机器人系统架构",
+    "subscribe": "订阅",
+    "github": "GitHub",
+    "user": "用户",
+    "goLogin": "去登录"
+  },
+  "hero": {
+    "badge": "v2.0 公开测试版已上线",
+    "heading1": "构建躯体。",
+    "heading2": "点燃智慧。",
+    "description": "OpenRobotX 是下一代具身智能（Embodied AI）开源社区。连接全球开发者，从机械结构到神经网络，共同定义机器人的未来。",
+    "exploreRobots": "探索机器人",
+    "starGitHub": "在 GitHub 上 Star",
+    "scroll": "向下滚动"
+  },
+  "home": {
+    "badge": "开源 · 具身智能 · 人形机器人",
+    "title": "Open Robot X",
+    "subtitle": "开源具身智能社区。聚焦 Humanoid、Embodied AI、ROS 与开源机器人，连接开发者与爱好者，一起推动下一代机器人技术。",
+    "subscribeCta": "订阅动态",
+    "featuresTitle": "核心功能",
+    "featuresSubtitle": "从公司展示到参数对比，一站式了解人形机器人生态",
+    "topCompaniesTitle": "十大机器人公司",
+    "topCompaniesSubtitle": "全球最具影响力的人形机器人公司，点击了解详情",
+    "robotCompareTitle": "人形机器人参数对比",
+    "robotCompareSubtitle": "主流人形机器人型号、自由度、负载、续航与 AI 能力一览。",
+    "robotIntro": "机器人介绍",
+    "paramCompare": "参数对比",
+    "dashboard": "看板",
+    "viewParams": "查看参数",
+    "compareParams": "参数对比",
+    "subscribeTitle": "订阅动态",
+    "subscribeSubtitle": "订阅 Open Robot X 最新动态，第一时间获取人形机器人与具身智能行业资讯。"
+  },
+  "news": {
+    "title": "行业资讯",
+    "subtitle": "人形机器人、具身智能与开源机器人领域的最新动态、深度解读与融资财报",
+    "allTypes": "全部类型",
+    "newsFlash": "快讯",
+    "inDepth": "深度文章",
+    "funding": "融资财报",
+    "launch": "发布会",
+    "searchPlaceholder": "搜索标题或摘要",
+    "searchBtn": "搜索",
+    "empty": "暂无数据",
+    "gridLayout": "方块布局",
+    "listLayout": "列表布局",
+    "total": "共 {{count}} 条"
+  },
+  "agiPath": {
+    "title": "通往 AGI 之路",
+    "subtitle": "人形机器人、具身智能与通用人工智能路上的关键事件与里程碑",
+    "empty": "暂无编年史事件，敬请期待。",
+    "milestone": "里程碑"
+  },
+  "robotStructure": {
+    "title": "机器人系统架构",
+    "scrollZoom": "滚轮缩放",
+    "zoom": "缩放",
+    "loadFailed": "加载失败"
+  },
+  "company": {
+    "backToHome": "返回首页",
+    "notFound": "公司不存在"
+  },
+  "robot": {
+    "backToHome": "返回首页",
+    "country": "产地",
+    "height": "高度 (cm)",
+    "weight": "体重 (kg)",
+    "totalDof": "总自由度 (DOF)",
+    "handDof": "手部自由度/手",
+    "payload": "全身负载 (kg)",
+    "walkingSpeed": "行走速度 (km/h)",
+    "runningSpeed": "奔跑速度 (km/h)",
+    "batteryLife": "电池续航 (h)",
+    "price": "价格 (USD)",
+    "targetApp": "目标应用",
+    "aiCore": "AI 核心",
+    "availability": "可用状态",
+    "website": "官网"
+  },
+  "auth": {
+    "loginExpired": "登录已过期",
+    "loginExpiredDesc": "您的登录已过期，请重新登录"
+  },
+  "subscribeModal": {
+    "title": "订阅规则",
+    "intro": "订阅前请知悉以下规则与说明，以便您更好地使用邮件订阅服务。",
+    "content": "订阅后您将收到 Open Robot X 的最新动态与行业资讯。请滚动至页面底部完成订阅。",
+    "goSubscribe": "去订阅",
+    "later": "稍后",
+    "rule1Label": "订阅内容",
+    "rule1Desc": "您将收到 Open Robot X 的精选动态：开源人形机器人、具身智能与 Humanoid 行业资讯、新产品与里程碑事件、社区活动与直播预告。",
+    "rule2Label": "发送频率",
+    "rule2Desc": "我们通常每周发送 1–2 封邮件，重要节点可能增加一期。不会进行垃圾轰炸，您可随时退订。",
+    "rule3Label": "退订方式",
+    "rule3Desc": "每封邮件底部均提供「退订」链接，点击即可一键取消订阅，无需额外步骤。",
+    "rule4Label": "隐私与数据",
+    "rule4Desc": "我们仅使用您填写的邮箱用于发送订阅内容，不会向第三方出售或共享。退订后将不再向该邮箱发送邮件。"
+  }
+}

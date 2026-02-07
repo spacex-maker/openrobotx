@@ -68,7 +68,8 @@ export const getCompanyBySlug = async (slug) => {
 
 /**
  * 分页查询人形机器人列表
- * @param {Object} params - { currentPage, pageSize, company, countryOrigin, keyword }
+ * @param {Object} params - { currentPage, pageSize, company, countryOrigin, keyword, orderBy }
+ * @param {string} params.orderBy - 排序方式: valuation(市值,默认), latest(最新), hot(最热), update(最近更新)
  * @returns {Promise<{ success: boolean, data?: { data: [], totalNum }, message?: string }>}
  */
 export const getHumanoidRobotList = async (params = {}) => {
@@ -115,6 +116,26 @@ export const getHumanoidRobotById = async (id) => {
 export const getNewsList = async (params = {}) => {
   try {
     const { data } = await axios.get(PATH_NEWS, { params });
+    if (data?.success && data?.data != null) {
+      return { success: true, data: data.data };
+    }
+    return { success: false, message: data?.message || '获取列表失败' };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.response?.data?.message || error.message || '获取列表失败',
+    };
+  }
+};
+
+/**
+ * 分页查询某机器人的资讯（用于机器人详情页）
+ * @param {number} robotId 机器人 ID
+ * @param {Object} params - { currentPage, pageSize }
+ */
+export const getRobotNewsList = async (robotId, params = {}) => {
+  try {
+    const { data } = await axios.get(`${PATH_NEWS}/by-robot/${robotId}`, { params });
     if (data?.success && data?.data != null) {
       return { success: true, data: data.data };
     }

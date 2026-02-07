@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Dropdown } from 'antd';
 import { GithubOutlined, GlobalOutlined, DownOutlined, UserOutlined, LogoutOutlined, MenuOutlined, AppstoreOutlined, MailOutlined } from '@ant-design/icons';
-import { useLocale } from '../../contexts/LocaleContext';
+import { useLocale, useTranslation } from '../../contexts/LocaleContext';
 import { auth } from '../../api/auth';
 import SubscribeRulesModal from '../SubscribeRulesModal/SubscribeRulesModal';
 import { addImageCompressSuffix } from '../../utils/imageUtils';
@@ -325,6 +325,7 @@ const LangBtn = styled.button`
   background: transparent;
   color: #9aa0a6;
   font-size: 14px;
+  line-height: 1.5;
   cursor: pointer;
   transition: color 0.2s, background 0.2s;
 
@@ -333,7 +334,14 @@ const LangBtn = styled.button`
     background: rgba(0, 212, 170, 0.08);
   }
   .anticon { font-size: 14px; }
-  span { max-width: 56px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  span {
+    max-width: 72px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.5;
+    padding: 2px 0;
+  }
 `;
 
 const LoginLink = styled(Link)`
@@ -400,11 +408,12 @@ const UserBtn = styled.button`
 
 const LangPanel = styled.div`
   min-width: 160px;
-  padding: 6px;
+  padding: 8px;
   border-radius: 12px;
   background: rgba(18, 22, 32, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  overflow: visible;
 `;
 
 const LangItem = styled.button`
@@ -415,9 +424,13 @@ const LangItem = styled.button`
   background: transparent;
   color: #e8eaed;
   font-size: 14px;
+  line-height: 1.5;
   text-align: left;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
 
   &:hover {
     background: rgba(255, 255, 255, 0.06);
@@ -465,7 +478,8 @@ const UserItem = styled.button`
 const AppHeader = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { locale, changeLocale } = useLocale();
+  const { locale, fullLocale, changeLocale, languages } = useLocale();
+  const t = useTranslation();
   const isNews = location.pathname.startsWith('/news');
   const isAgiPath = location.pathname === '/agi-path';
 
@@ -482,10 +496,6 @@ const AppHeader = () => {
     return null;
   });
   
-  const [languages] = useState([
-    { languageCode: 'zh-CN', languageNameNative: '简体中文' },
-    { languageCode: 'en-US', languageNameNative: 'English' },
-  ]);
   const [langOpen, setLangOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
@@ -540,7 +550,7 @@ const AppHeader = () => {
     auth.logout({ redirectTo: '/login' });
   };
 
-  const currentLang = languages.find((l) => l.languageCode === locale) || languages[0];
+  const currentLang = languages.find((l) => l.languageCode === fullLocale) || languages[0];
 
   return (
     <>
@@ -560,7 +570,7 @@ const AppHeader = () => {
                   type="button"
                   onClick={() => handleExploreAnchor('#robot-companies')}
                 >
-                  十大机器人公司
+                  {t('header.topCompanies')}
                 </ExploreItem>
                 <ExploreItem
                   type="button"
@@ -570,7 +580,7 @@ const AppHeader = () => {
                     navigate('/news');
                   }}
                 >
-                  行业资讯
+                  {t('header.news')}
                 </ExploreItem>
                 <ExploreItem
                   type="button"
@@ -580,7 +590,7 @@ const AppHeader = () => {
                     navigate('/agi-path');
                   }}
                 >
-                  通往 AGI 之路
+                  {t('header.agiPath')}
                 </ExploreItem>
                 <ExploreItem
                   type="button"
@@ -590,22 +600,22 @@ const AppHeader = () => {
                     navigate('/robot-structure');
                   }}
                 >
-                  机器人系统架构
+                  {t('header.robotStructure')}
                 </ExploreItem>
               </ExplorePanel>
             )}
           >
             <ExploreBtn type="button">
               <AppstoreOutlined />
-              <span>探索</span>
+              <span>{t('header.explore')}</span>
               <DownOutlined style={{ fontSize: 10, opacity: 0.7 }} />
             </ExploreBtn>
           </Dropdown>
           <SubscribeBtn type="button" onClick={() => setSubscribeModalOpen(true)}>
-            <MailOutlined /> 订阅
+            <MailOutlined /> {t('header.subscribe')}
           </SubscribeBtn>
           <NavLink href="https://github.com/spacex-maker" target="_blank" rel="noopener noreferrer">
-            <GithubOutlined /> GitHub
+            <GithubOutlined /> {t('header.github')}
           </NavLink>
 
           <Dropdown
@@ -613,13 +623,14 @@ const AppHeader = () => {
             onOpenChange={setLangOpen}
             trigger={['click']}
             placement="bottomRight"
+            overlayStyle={{ overflow: 'visible' }}
             dropdownRender={() => (
               <LangPanel>
                 {languages.map((lang) => (
                   <LangItem
                     key={lang.languageCode}
                     type="button"
-                    className={locale === lang.languageCode ? 'selected' : ''}
+                    className={fullLocale === lang.languageCode ? 'selected' : ''}
                     onClick={() => {
                       changeLocale(lang.languageCode);
                       setLangOpen(false);
@@ -633,7 +644,7 @@ const AppHeader = () => {
           >
             <LangBtn type="button">
               <GlobalOutlined />
-              <span>{currentLang?.languageNameNative || locale || '语言'}</span>
+              <span>{currentLang?.languageNameNative || t('common.language')}</span>
               <DownOutlined style={{ fontSize: 10, opacity: 0.7 }} />
             </LangBtn>
           </Dropdown>
@@ -654,7 +665,7 @@ const AppHeader = () => {
                       handleLogout();
                     }}
                   >
-                    <LogoutOutlined /> 退出登录
+                    <LogoutOutlined /> {t('common.logout')}
                   </UserItem>
                 </UserPanel>
               )}
@@ -667,14 +678,14 @@ const AppHeader = () => {
                     (userInfo.nickname || userInfo.username || '?').charAt(0).toUpperCase()
                   )}
                 </span>
-                <span className="name">{userInfo.nickname || userInfo.username || '用户'}</span>
+                <span className="name">{userInfo.nickname || userInfo.username || t('header.user')}</span>
                 <DownOutlined style={{ fontSize: 10, opacity: 0.7 }} />
               </UserBtn>
             </Dropdown>
           ) : (
             <>
-              <LoginLink to={{ pathname: '/login', state: { from: location.pathname || '/' } }}>登录</LoginLink>
-              <SignupLink to={{ pathname: '/signup', state: { from: location.pathname || '/' } }}>注册</SignupLink>
+              <LoginLink to={{ pathname: '/login', state: { from: location.pathname || '/' } }}>{t('common.login')}</LoginLink>
+              <SignupLink to={{ pathname: '/signup', state: { from: location.pathname || '/' } }}>{t('common.register')}</SignupLink>
             </>
           )}
         </Nav>
@@ -696,52 +707,52 @@ const AppHeader = () => {
                   (userInfo.nickname || userInfo.username || '?').charAt(0).toUpperCase()
                 )}
               </span>
-              <span className="name">{userInfo.nickname || userInfo.username || '用户'}</span>
+              <span className="name">{userInfo.nickname || userInfo.username || t('header.user')}</span>
             </MobileMenuUser>
           ) : (
             <MobileMenuAuth>
-              <LoginLink to={{ pathname: '/login', state: { from: location.pathname || '/' } }} onClick={closeMenu}>登录</LoginLink>
-              <SignupLink to={{ pathname: '/signup', state: { from: location.pathname || '/' } }} onClick={closeMenu}>注册</SignupLink>
+              <LoginLink to={{ pathname: '/login', state: { from: location.pathname || '/' } }} onClick={closeMenu}>{t('common.login')}</LoginLink>
+              <SignupLink to={{ pathname: '/signup', state: { from: location.pathname || '/' } }} onClick={closeMenu}>{t('common.register')}</SignupLink>
             </MobileMenuAuth>
           )}
         </MobileMenuHeader>
         <MobileNav>
           <MobileNavButton type="button" onClick={() => { handleAnchor('#robot-companies'); }}>
-            十大机器人公司
+            {t('header.topCompanies')}
           </MobileNavButton>
           <MobileNavButton
             type="button"
             className={isNews ? 'active' : ''}
             onClick={() => { closeMenu(); navigate('/news'); }}
           >
-            行业资讯
+            {t('header.news')}
           </MobileNavButton>
           <MobileNavButton
             type="button"
             className={isAgiPath ? 'active' : ''}
             onClick={() => { closeMenu(); navigate('/agi-path'); }}
           >
-            通往 AGI 之路
+            {t('header.agiPath')}
           </MobileNavButton>
           <MobileNavButton
             type="button"
             className={location.pathname === '/robot-structure' ? 'active' : ''}
             onClick={() => { closeMenu(); navigate('/robot-structure'); }}
           >
-            机器人系统架构
+            {t('header.robotStructure')}
           </MobileNavButton>
           <MobileNavButton type="button" onClick={() => { closeMenu(); setSubscribeModalOpen(true); }}>
-            <MailOutlined /> 订阅
+            <MailOutlined /> {t('header.subscribe')}
           </MobileNavButton>
           <MobileNavItem href="https://github.com/spacex-maker" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
-            <GithubOutlined /> GitHub
+            <GithubOutlined /> {t('header.github')}
           </MobileNavItem>
           <MobileDivider />
           {languages.map((lang) => (
             <MobileNavButton
               key={lang.languageCode}
               type="button"
-              className={locale === lang.languageCode ? 'active' : ''}
+              className={fullLocale === lang.languageCode ? 'active' : ''}
               onClick={() => {
                 changeLocale(lang.languageCode);
               }}
@@ -753,7 +764,7 @@ const AppHeader = () => {
         {userInfo && (
           <MobileUserRow>
             <MobileNavButton type="button" className="danger" onClick={() => { closeMenu(); handleLogout(); }}>
-              <LogoutOutlined /> 退出登录
+              <LogoutOutlined /> {t('common.logout')}
             </MobileNavButton>
           </MobileUserRow>
         )}
