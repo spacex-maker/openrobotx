@@ -1,0 +1,2 @@
+# SPA 回退：直接访问 /login、/signup、/materials 等时返回 index.html，由前端路由处理
+/*    /index.html   200

@@ -1,3 +1,9 @@
 [build]
 command = "npm run build"
 publish = "build/"
+
+# SPA 回退：所有路径均返回 index.html，由前端路由处理（如 /login、/signup、/materials 等）
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
