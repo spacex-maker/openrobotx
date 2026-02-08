@@ -482,6 +482,7 @@ const AppHeader = () => {
   const t = useTranslation();
   const isNews = location.pathname.startsWith('/news');
   const isAgiPath = location.pathname === '/agi-path';
+  const isMaterials = location.pathname.startsWith('/materials');
 
   const [userInfo, setUserInfo] = useState(() => {
     const token = localStorage.getItem('token');
@@ -601,6 +602,16 @@ const AppHeader = () => {
                   }}
                 >
                   {t('header.robotStructure')}
+                </ExploreItem>
+                <ExploreItem
+                  type="button"
+                  className={isMaterials ? 'active' : ''}
+                  onClick={() => {
+                    setExploreOpen(false);
+                    navigate('/materials');
+                  }}
+                >
+                  {t('header.materials')}
                 </ExploreItem>
               </ExplorePanel>
             )}
@@ -740,6 +751,13 @@ const AppHeader = () => {
             onClick={() => { closeMenu(); navigate('/robot-structure'); }}
           >
             {t('header.robotStructure')}
+          </MobileNavButton>
+          <MobileNavButton
+            type="button"
+            className={isMaterials ? 'active' : ''}
+            onClick={() => { closeMenu(); navigate('/materials'); }}
+          >
+            {t('header.materials')}
           </MobileNavButton>
           <MobileNavButton type="button" onClick={() => { closeMenu(); setSubscribeModalOpen(true); }}>
             <MailOutlined /> {t('header.subscribe')}

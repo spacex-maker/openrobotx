@@ -16,6 +16,7 @@ import RobotStructurePage from './pages/RobotStructure/RobotStructurePage';
 import NewsListPage from './pages/News/NewsListPage';
 import NewsDetailPage from './pages/News/NewsDetailPage';
 import AgiPathPage from './pages/AgiPath/AgiPathPage';
+import MaterialsListPage from './pages/Materials/MaterialsListPage';
 import LoginPage from './pages/Auth/LoginPage';
 import SignupPage from './pages/Auth/SignupPage';
 
@@ -63,6 +64,7 @@ function AppContent() {
             <Route path="/news" element={<NewsListPage />} />
             <Route path="/news/:id" element={<NewsDetailPage />} />
             <Route path="/agi-path" element={<AgiPathPage />} />
+            <Route path="/materials" element={<MaterialsListPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
           </Routes>

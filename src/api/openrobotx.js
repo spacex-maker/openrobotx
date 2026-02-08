@@ -243,3 +243,88 @@ export const likeNews = async (id) => {
     };
   }
 };
+
+// ========== 材料系统 ==========
+
+const PATH_MATERIALS = '/productx/openrobotx/materials';
+
+/**
+ * 获取材料分类树
+ * @returns {Promise<{ success: boolean, data?: OpenrobotxMaterialCategoryTreeVO[], message?: string }>}
+ */
+export const getMaterialCategoryTree = async () => {
+  try {
+    const { data } = await axios.get(`${PATH_MATERIALS}/categories/tree`);
+    if (data?.success && data?.data != null) {
+      return { success: true, data: data.data };
+    }
+    return { success: false, message: data?.message || '获取分类树失败' };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.response?.data?.message || error.message || '获取分类树失败',
+    };
+  }
+};
+
+/**
+ * 分页查询材料列表
+ * @param {Object} params - { currentPage, pageSize, categoryId, keyword }
+ * @returns {Promise<{ success: boolean, data?: { data: [], totalNum }, message?: string }>}
+ */
+export const getMaterialList = async (params = {}) => {
+  try {
+    const { data } = await axios.get(`${PATH_MATERIALS}`, { params });
+    if (data?.success && data?.data != null) {
+      return { success: true, data: data.data };
+    }
+    return { success: false, message: data?.message || '获取列表失败' };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.response?.data?.message || error.message || '获取列表失败',
+    };
+  }
+};
+
+/**
+ * 根据基础材料 ID 查询详情（含规格与物理属性）
+ * @param {number} id 基础材料 ID
+ * @returns {Promise<{ success: boolean, data?: OpenrobotxMaterialDetailVO, message?: string }>}
+ */
+export const getMaterialDetail = async (id) => {
+  try {
+    const { data } = await axios.get(`${PATH_MATERIALS}/${id}`);
+    if (data?.success && data?.data != null) {
+      return { success: true, data: data.data };
+    }
+    return { success: false, message: data?.message || '获取详情失败' };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.response?.data?.message || error.message || '获取详情失败',
+    };
+  }
+};
+
+/**
+ * 批量查询材料详情（用于对比看板）
+ * @param {number[]} ids 基础材料 ID 列表
+ * @returns {Promise<{ success: boolean, data?: OpenrobotxMaterialDetailVO[], message?: string }>}
+ */
+export const getMaterialDetailBatch = async (ids) => {
+  try {
+    if (!ids?.length) return { success: true, data: [] };
+    const idsStr = ids.join(',');
+    const { data } = await axios.get(`${PATH_MATERIALS}/batch`, { params: { ids: idsStr } });
+    if (data?.success && Array.isArray(data?.data)) {
+      return { success: true, data: data.data };
+    }
+    return { success: false, message: data?.message || '获取详情失败' };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.response?.data?.message || error.message || '批量获取详情失败',
+    };
+  }
+};
