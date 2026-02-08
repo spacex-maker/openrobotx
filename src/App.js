@@ -51,7 +51,7 @@ function AppContent() {
         }}
         locale={antdLocaleMap[fullLocale] || zhCN}
       >
-        <Router>
+        <Router basename={process.env.PUBLIC_URL || ''}>
           <Helmet>
             <html lang={fullLocale?.startsWith('zh') ? 'zh-CN' : 'en-US'} />
           </Helmet>

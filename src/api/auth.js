@@ -1,4 +1,5 @@
 import axios from './axios';
+import { getLoginPath } from '../utils/paths';
 
 export const auth = {
   // 登录
@@ -41,11 +42,11 @@ export const auth = {
     }
   },
 
-  // 退出登录（可选 redirectTo，默认 /login）
+  // 退出登录（可选 redirectTo，默认跳转到本应用登录页）
   logout: (options) => {
     localStorage.removeItem('token');
     localStorage.removeItem('userInfo');
-    const redirectTo = (options && options.redirectTo) || '/login';
+    const redirectTo = (options && options.redirectTo) || getLoginPath();
     window.location.href = redirectTo;
   },
 

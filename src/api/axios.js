@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Modal } from 'antd';
+import { getLoginPath } from '../utils/paths';
 
 // 获取基础URL：根据前端域名判断使用哪个后端
 const getBaseURL = () => {
@@ -68,7 +69,7 @@ const handle401Error = () => {
     okText: '去登录',
     onOk: () => {
       isShowingModal = false;
-      window.location.href = '/login';
+      window.location.href = getLoginPath();
     },
     onCancel: () => {
       isShowingModal = false;
